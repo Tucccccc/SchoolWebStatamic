@@ -1,0 +1,58 @@
+<style>
+  .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
+  .navbar {
+    background-color: #F17720;
+  }
+  
+  /* Dropdown menu on hover */
+  .dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu {
+    margin-top: 0;
+    background-color: white;
+  }
+
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #F17720; /* Màu nền khi hover */
+  }
+</style>
+
+<div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          {{ nav:collection:pages include_home="true"}}
+            <li class="nav-item dropdown">
+              {{ if slug == "home"}} 
+                <a class="nav-link" href="{{ url }}"> 
+                  <i class="fas fa-home"></i> 
+                </a> 
+              {{ else }} 
+                <a href="{{ url }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> 
+                  {{ title }} 
+                </a>
+              {{ /if }} 
+              {{ if children }}
+                <ul class="dropdown-menu">
+                  {{ children }}
+                    <li>
+                      <a href="{{ url }}" class="dropdown-item">
+                        {{ title }}
+                      </a>
+                    </li> 
+                  {{ /children }}
+                </ul> 
+              {{ /if }}
+            </li> 
+          {{ /nav:collection:pages }}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
