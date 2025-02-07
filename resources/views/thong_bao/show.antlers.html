@@ -1,0 +1,13 @@
+<div>
+    <div>
+        {{ title }}
+    </div>
+    <div>
+        {{ pdf_file }}
+        <embed src= "{{ value || url }}" width="800" height="500">
+        {{ /pdf_file }}
+    </div>
+    <div>
+        {{ ngay_dang format="Y" }}
+    </div>
+</div>

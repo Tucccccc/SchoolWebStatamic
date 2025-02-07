@@ -7,9 +7,11 @@
     background-color: #F17720;
   }
   
-  /* Dropdown menu on hover */
-  .dropdown:hover>.dropdown-menu {
-    display: block;
+  /* Dropdown menu on hover for larger screens */
+  @media (min-width: 992px) {
+    .dropdown:hover > .dropdown-menu {
+      display: block;
+    }
   }
   
   .dropdown-menu {
@@ -20,11 +22,23 @@
   .dropdown-menu .dropdown-item:hover {
     background-color: #F17720; /* Màu nền khi hover */
   }
+
+  .custom-navbar {
+    border-top: 5px solid #0474DA;
+    margin-top: 23px;
+  }
 </style>
 
-<div>
+<div class="custom-navbar">
   <nav class="navbar navbar-expand-lg">
     <div class="container">
+      {{# ------------------------------------- Navbar button on small screen ------------------------------------- #}}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="background-color: #F17720;"></span>
+      </button>
+      {{# ------------------------------------- Navbar button on small screen ------------------------------------- #}}
+
+      {{# ------------------------------------- Navbar content ------------------------------------- #}}
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           {{ nav:collection:pages include_home="true"}}
@@ -53,6 +67,8 @@
           {{ /nav:collection:pages }}
         </ul>
       </div>
+      {{# ------------------------------------- Navbar content ------------------------------------- #}}
+
     </div>
   </nav>
 </div>

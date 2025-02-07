@@ -1,11 +1,11 @@
 ---
 id: home
 blueprint: pages
-title: Home
+title: 'Trang Chủ'
 template: home
 author: c3056695-eeaf-44b6-a2cb-5cd8a48b5b01
 updated_by: c3056695-eeaf-44b6-a2cb-5cd8a48b5b01
-updated_at: 1737017500
+updated_at: 1737018169
 ---
 ## Welcome to your brand new Statamic site!
 

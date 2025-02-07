@@ -1,0 +1,82 @@
+title: 'Thông Báo'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Tiêu đề'
+          -
+            handle: content
+            field:
+              type: markdown
+              display: 'Nội dung'
+              localizable: true
+          -
+            handle: author
+            field:
+              type: users
+              display: 'Tác giả'
+              default:
+                - c3056695-eeaf-44b6-a2cb-5cd8a48b5b01
+              localizable: true
+              max_items: 1
+          -
+            handle: hinh_bia
+            field:
+              container: assets
+              folder: image/thong-bao
+              restrict: true
+              type: assets
+              display: 'Hình bìa'
+              max_files: 1
+          -
+            handle: pdf_file
+            field:
+              container: assets
+              folder: pdf/thong-bao
+              restrict: true
+              type: assets
+              display: 'PDF file'
+              max_files: 1
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - thong_bao
+              max_items: 1
+              listable: false
+              localizable: true

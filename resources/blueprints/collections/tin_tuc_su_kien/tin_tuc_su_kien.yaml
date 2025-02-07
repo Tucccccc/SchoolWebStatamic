@@ -1,0 +1,73 @@
+title: 'Tin Tức Sự Kiện'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Tiêu đề'
+          -
+            handle: content
+            field:
+              type: markdown
+              display: 'Nội dung'
+              localizable: true
+          -
+            handle: author
+            field:
+              type: users
+              display: 'Tác giả'
+              default:
+                - c3056695-eeaf-44b6-a2cb-5cd8a48b5b01
+              localizable: true
+              max_items: 1
+          -
+            handle: hinh_bia
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: 'Hình bìa'
+              folder: image/tin-tuc-su-kien/hinh-bia
+              restrict: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - tin_tuc_su_kien
+              max_items: 1
+              listable: false
+              localizable: true

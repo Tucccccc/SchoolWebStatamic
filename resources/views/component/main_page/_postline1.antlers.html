@@ -1,0 +1,198 @@
+<style>
+    .post-line-1-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .news, .announcements {
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    .news {
+        flex: 2;
+        margin-right: 20px;
+        flex-direction: column;
+    }
+    .news-content {
+        display: flex;
+    }
+    .news-main {
+        flex: 2;
+    }
+    .news-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20px;
+    }
+    .news-item {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .news-item p {
+        margin: 0;
+    }
+    .announcements {
+        flex: 1;
+    }
+    .news h2, .announcements h2 {
+        color: #F17720;
+        margin-bottom: 10px;
+    }
+    .news-item, .announcement-item {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    /* 
+    .news-item img, .announcement-item img {
+        width: 200px;
+        height: 80px;
+        margin-right: 10px;
+    }
+        */
+    .news-item p, .announcement-item p {
+        margin: 0;
+    }
+    .announcement-date {
+        background-color: #f0f0f0;
+        padding: 10px;
+        text-align: center;
+        margin-right: 10px;
+    }
+    .announcement-date span {
+        display: block;
+    }
+    .announcement-date .day {
+        font-size: 24px;
+        color: #F17720;
+    }
+    .announcement-date .year {
+        font-size: 12px;
+        color: #666;
+    }
+    @media (max-width: 768px) {
+        .post-line-1-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+        .news, .announcements {
+            margin: 10px 0;
+        }
+        .news-content {
+            flex-direction: column;
+        }
+        .news-side {
+            margin-left: 0;
+            margin-top: 20px;
+        }
+    }
+
+    .img-first-post {
+        width: 700px; /* Đảm bảo chiều rộng bằng container */
+        height: 350px; /* Đặt chiều cao cố định */
+        object-fit: cover; /* Cắt bớt phần dư mà không làm méo hình */
+    }
+</style>
+
+<div class="post-line-1-wrapper">
+    {{# ------------------------------------- Column 1 ------------------------------------- #}}
+    <div class="news">
+        <h2>
+            TIN NỔI BẬT
+        </h2>
+        
+        <div class="news-content">
+            {{# ------------------------------------- List Tin tức ------------------------------------- #}}
+            {{ collection:tin_tuc_su_kien }}
+            
+            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+            {{ if index == 0 }}
+            <div class="news-main">
+                <a href="{{ url }}">
+                    {{ hinh_bia }}
+                    <img alt="Cloudy sky" class="img-first-post" src="{{ value || url }}"/>
+                    {{ /hinh_bia }}
+                </a>
+                <a href="{{ url }}">
+                    <p>{{ title }}</p>
+                </a>
+            </div>
+            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+
+            {{ else }}
+            <div class="news-side">
+                <div class="news-item">
+                    <a href="{{ url }}">
+                        {{ hinh_bia }}
+                            <img alt="Cloudy sky" height="80" width="80" src="{{ value || url }}" />
+                        {{ /hinh_bia }}
+                    </a>
+                    <a href="{{ url }}">
+                        <p>{{ title }}</p>
+                    </a>
+                </div>
+            </div>
+            {{ /if }}
+            {{ /collection:tin_tuc_su_kien }}
+            {{# ------------------------------------- List Tin tức ------------------------------------- #}}
+        </div>
+    </div>
+    {{# ------------------------------------- Column 1 ------------------------------------- #}}
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+    <div class="announcements">
+        <h2>
+            THÔNG BÁO
+        </h2>
+
+        {{# ------------------------------------- List Thông báo ------------------------------------- #}}
+        {{ collection:thong_bao }}
+            <div class="announcement-item">
+                <a href="{{ url }}">
+                    <div class="announcement-date">
+                        <span class="day">
+                            {{ date format="d" }}
+                        </span>
+                        <span class="year">
+                            {{ date format="m/Y" }}
+                        </span>
+                    </div>
+                </a>
+                <a href="{{ url }}">
+                    <p id="title-thong-bao">
+                        {{ title }}
+                    </p>
+                </a>
+            </div>
+        {{ /collection:thong_bao }}
+        {{# ------------------------------------- List Thông báo ------------------------------------- #}}
+
+    </div>
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+</div>
+
+<script>
+    // ------------------------------------- Cắt chuỗi -------------------------------------
+    function truncateText(selector, maxLength) {
+        let element = document.querySelector(selector);
+        let text = element.innerText;
+
+        if (text.length > maxLength) {
+            let truncatedText = text.substring(0, maxLength);
+            let lastSpace = truncatedText.lastIndexOf(" "); // Tìm khoảng trắng cuối cùng
+            if (lastSpace > 0) {
+                truncatedText = truncatedText.substring(0, lastSpace); // Cắt tại khoảng trắng
+            }
+            element.innerText = truncatedText + "..."; // Thêm dấu "..."
+        }
+    }
+
+    truncateText("#title-thong-bao", 128); // Giới hạn 30 ký tự
+    // ------------------------------------- Cắt chuỗi -------------------------------------
+</script>

@@ -1,3 +1,68 @@
+<style>
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    .logo img {
+        height: 80px;
+        margin-right: 10px;
+    }
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+    }
+    .logo-text .main-title {
+        color: #ff6600;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .logo-text .sub-title {
+        color: #007bff;
+        font-size: 14px;
+    }
+    .search-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid #007bff;
+        border-radius: 20px;
+        padding: 5px 10px;
+    }
+    .search-box input {
+        border: none;
+        outline: none;
+        padding: 5px;
+    }
+    .search-box i {
+        color: #007bff;
+    }
+</style>
+
 <div>
-    <p>Header</p>
+    <div class="header">
+        <div class="logo">
+            <img class="custom-logo-image head-inl" src="/assets/image/logo_truong.jpg" alt="Logo trường">
+            <div class="logo-text">
+                <div class="sub-title">
+                 BỘ NGÀNH TRỰC THUỘC
+                </div>
+                <div class="main-title">
+                 TRƯỜNG CAO ĐẲNG CÔNG NGHỆ VÀ KINH TẾ BẢO LỘC
+                </div>
+                <div class="sub-title">
+                 BAOLOC COLLEGE OF TECHNOLOGY AND ECONOMICS
+                </div>
+            </div>
+        </div>
+        <div class="search-box">
+            <input placeholder="Tìm kiếm ..." type="text"/>
+            <i class="fas fa-search">
+            </i>
+        </div>
+    </div>
 </div>
