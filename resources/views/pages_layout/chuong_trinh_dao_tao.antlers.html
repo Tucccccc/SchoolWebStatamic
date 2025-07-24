@@ -1,0 +1,37 @@
+<style>
+    .title-t-program {
+        font-weight: bold;
+        font-size: 21px;
+        text-align: center;
+    }
+</style>
+
+<br>
+
+<div class="title-t-program">
+    {{ title }}
+</div>
+
+<br>
+
+<div>
+    <table class="table table-bordered table-sm w-auto mx-auto">
+        <thead class="table-light text-center">
+            <tr>
+                <th scope="col" style="width: 80px;">TT</th>
+                <th scope="col">TRÌNH ĐỘ CAO ĐẲNG</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{ children }}
+            <tr>
+                <td class="text-center" style="width: 80px;">{{ count }}</td>
+                <td>
+                    <a href="{{ url }}">{{ title }}</a>
+                </td>
+            </tr>
+            {{ /children }}
+        </tbody>
+    </table>
+</div>

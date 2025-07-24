@@ -6,23 +6,29 @@
         padding-top: 20px;
     }
 
-    .news, .announcements {
+    .news,
+    .announcements,
+    .side-column {
         background-color: white;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         margin-bottom: 20px;
     }
+
     .news {
-        flex: 2;
+        flex: 3;
         margin-right: 20px;
         flex-direction: column;
     }
+
     .news-content {
         display: flex;
     }
+
     .news-main {
-        flex: 2;
+        flex: 1;
     }
+
     .news-side {
         flex: 1;
         display: flex;
@@ -30,6 +36,7 @@
         justify-content: space-between;
         margin-left: 20px;
     }
+
     .news-item {
         display: flex;
         margin-bottom: 10px;
@@ -38,55 +45,68 @@
     .news-item p {
         margin: 0;
     }
+
     .announcements {
         flex: 1;
     }
-    .news h2, .announcements h2 {
-        color: #F17720;
+
+    .news h2,
+    .announcements h2 {
+        color: #0474DA;
         margin-bottom: 10px;
     }
-    .news-item, .announcement-item {
+
+    .news-item,
+    .announcement-item {
         display: flex;
         margin-bottom: 10px;
     }
-    /* 
-    .news-item img, .announcement-item img {
-        width: 200px;
-        height: 80px;
-        margin-right: 10px;
-    }
-        */
-    .news-item p, .announcement-item p {
+
+    .news-item p,
+    .announcement-item p {
         margin: 0;
     }
+
     .announcement-date {
         background-color: #f0f0f0;
         padding: 10px;
         text-align: center;
         margin-right: 10px;
     }
+
     .announcement-date span {
         display: block;
     }
+
     .announcement-date .day {
         font-size: 24px;
-        color: #F17720;
+        color: #0474DA;
     }
+
     .announcement-date .year {
         font-size: 12px;
         color: #666;
     }
+
+    .side-column {
+        flex: 1;
+    }
+
     @media (max-width: 768px) {
         .post-line-1-wrapper {
             flex-direction: column;
             align-items: center;
         }
-        .news, .announcements {
+
+        .news,
+        .announcements {
             margin: 10px 0;
         }
+
         .news-content {
             flex-direction: column;
         }
+
         .news-side {
             margin-left: 0;
             margin-top: 20px;
@@ -94,87 +114,378 @@
     }
 
     .img-first-post {
-        width: 700px; /* Đảm bảo chiều rộng bằng container */
-        height: 350px; /* Đặt chiều cao cố định */
-        object-fit: cover; /* Cắt bớt phần dư mà không làm méo hình */
+        max-width: 30vh;
+        /* Đảm bảo chiều rộng bằng container */
+        max-height: 20vh;
+        /* Đặt chiều cao cố định */
+        object-fit: cover;
+        /* Cắt bớt phần dư mà không làm méo hình */
+        padding-bottom: 10px;
+    }
+
+    .img-items {
+        max-width: 25vh;
+        /* Đảm bảo chiều rộng bằng container */
+        max-height: 15vh;
+        /* Đặt chiều cao cố định */
+        object-fit: cover;
+        /* Cắt bớt phần dư mà không làm méo hình */
+    }
+
+    .bottom-border-news {
+        border-bottom: 3.5px solid #0474DA;
+    }
+
+    .bottom-border-items {
+        border-bottom: 1px solid #d8d8d8;
+        margin-bottom: 8px;
+    }
+
+    .text-bold {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .font-s-13 {
+        font-size: 13px;
+        text-align: justify;
+    }
+
+    .post-line-1-wrapper a:hover {
+        color: #0161bb;
+        /* Màu khi hover */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .font-merriweather-bold {
+        font-family: 'Merriweather', sans-serif;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .font-merriweather-darker {
+        font-family: 'Merriweather', sans-serif;
+        font-weight: 500;
+        color: #222;
     }
 </style>
 
 <div class="post-line-1-wrapper">
     {{# ------------------------------------- Column 1 ------------------------------------- #}}
     <div class="news">
-        <h2>
-            TIN NỔI BẬT
+        {{# ------------------------------------- Thông tin tuyển sinh ------------------------------------- #}}
+        <h2 class="bottom-border-news text-bold">
+            TUYỂN SINH
         </h2>
-        
-        <div class="news-content">
-            {{# ------------------------------------- List Tin tức ------------------------------------- #}}
-            {{ collection:tin_tuc_su_kien }}
-            
-            {{# ------------------------------------- Item đầu ------------------------------------- #}}
-            {{ if index == 0 }}
-            <div class="news-main">
-                <a href="{{ url }}">
-                    {{ hinh_bia }}
-                    <img alt="Cloudy sky" class="img-first-post" src="{{ value || url }}"/>
-                    {{ /hinh_bia }}
-                </a>
-                <a href="{{ url }}">
-                    <p>{{ title }}</p>
-                </a>
-            </div>
-            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+        {{ collection:tuyen_sinh limit="1" as="posts"}}
+        {{ posts }}
+        <div>
+            <a href="{{ url }}">
+                {{ hinh_bia }}
+                <img src="{{ value || url }}" style="margin-right: auto; margin-left: auto" />
+                {{ /hinh_bia }}
+            </a>
+        </div>
+        {{ /posts }}
+        {{ /collection:tuyen_sinh }}
+        {{# ------------------------------------- Thông tin tuyển sinh ------------------------------------- #}}
 
-            {{ else }}
-            <div class="news-side">
+        <br>
+        <br>
+        <h2 class="bottom-border-news text-bold">
+            TIN TỨC SỰ KIỆN
+        </h2>
+
+        {{ collection:tin_tuc_su_kien paginate="4" as="posts" page_name="tin_tuc_su_kien" }}
+        <div class="news-content">
+            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+            <div class="news-side font-merriweather-bold">
+                {{ posts limit="2"}}
                 <div class="news-item">
                     <a href="{{ url }}">
                         {{ hinh_bia }}
-                            <img alt="Cloudy sky" height="80" width="80" src="{{ value || url }}" />
+                        <img class="img-items" src="{{ value || url }}" />
                         {{ /hinh_bia }}
                     </a>
                     <a href="{{ url }}">
-                        <p>{{ title }}</p>
+                        <p style="margin-left: 8px;" class="font-s-13">{{ title }}</p>
                     </a>
                 </div>
+                <div class="bottom-border-items"></div>
+                {{ /posts }}
             </div>
-            {{ /if }}
-            {{ /collection:tin_tuc_su_kien }}
+            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+
+            {{# ------------------------------------- List Tin tức ------------------------------------- #}}
+            <div class="news-side">
+                {{ posts offset="2"}}
+                <div class="news-item font-merriweather-bold">
+                    <a href="{{ url }}">
+                        {{ hinh_bia }}
+                        <img class="img-items" src="{{ value || url }}" />
+                        {{ /hinh_bia }}
+                    </a>
+                    <a href="{{ url }}">
+                        <p style="margin-left: 8px" class="font-s-13">{{ title }}</p>
+                    </a>
+                </div>
+                <div class="bottom-border-items"></div>
+                {{ /posts }}
+            </div>
             {{# ------------------------------------- List Tin tức ------------------------------------- #}}
         </div>
+
+        {{# ------------------------------------- Pagination for List Tin tức ------------------------------------- #}}
+        <br>
+        <div style="padding-left: 43%; padding-right: 43%; color: #0474DA" class="font-s-13">
+            {{ paginate }}
+            <a href="{{ prev_page }}">⬅ </a>
+
+            {{ current_page }} / {{ total_pages }}
+
+            <a href="{{ next_page }}"> ➡</a>
+            {{ /paginate }}
+        </div>
+        {{# ------------------------------------- Pagination for List Tin tức ------------------------------------- #}}
+
+        {{ /collection:tin_tuc_su_kien }}
+
+        {{# ------------------------- Tin tức Đoàn Thanh Niên -------------------------#}}
+        <br>
+        <br>
+        <h2 class="bottom-border-news text-bold">
+            TIN TỨC ĐOÀN TRƯỜNG
+        </h2>
+
+        {{ collection:tin_tuc_doan_truong paginate="4" as="posts" page_name="tin_tuc_doan_truong"}}
+        <div class="news-content">
+            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+            <div class="news-side font-merriweather-bold">
+                {{ posts limit="2"}}
+                <div class="news-item">
+                    <a href="{{ url }}">
+                        {{ hinh_bia }}
+                        <img class="img-items" src="{{ value || url }}" />
+                        {{ /hinh_bia }}
+                    </a>
+                    <a href="{{ url }}">
+                        <p style="margin-left: 8px" class="font-s-13">{{ title }}</p>
+                    </a>
+                </div>
+                <div class="bottom-border-items"></div>
+                {{ /posts }}
+            </div>
+            {{# ------------------------------------- Item đầu ------------------------------------- #}}
+
+            {{# ------------------------- List Tin tức Đoàn Thanh Niên -------------------------#}}
+            <div class="news-side">
+                {{ posts offset="2"}}
+                <div class="news-item font-merriweather-bold">
+                    <a href="{{ url }}">
+                        {{ hinh_bia }}
+                        <img class="img-items" src="{{ value || url }}" />
+                        {{ /hinh_bia }}
+                    </a>
+                    <a href="{{ url }}">
+                        <p style="margin-left: 8px" class="font-s-13">{{ title }}</p>
+                    </a>
+                </div>
+                <div class="bottom-border-items"></div>
+                {{ /posts }}
+            </div>
+            {{# ------------------------- List Tin tức Đoàn Thanh Niên -------------------------#}}
+        </div>
+        {{# ------------------------- Tin tức Đoàn Thanh Niên -------------------------#}}
+        {{# ------------------------------------- Pagination for List Tin tức Đoàn Thanh Niên
+        ------------------------------------- #}}
+        <br>
+        <div style="padding-left: 43%; padding-right: 43%; color: #0474DA" class="font-s-13">
+            {{ paginate }}
+            <a href="{{ prev_page }}">⬅ </a>
+
+            {{ current_page }} / {{ total_pages }}
+
+            <a href="{{ next_page }}"> ➡</a>
+            {{ /paginate }}
+        </div>
+        {{#
+        -----------------------------------------------------------------------------------------------------------------------
+        #}}
+        {{# ------------------------------------- Pagination for List Tin tức Đoàn Thanh Niên
+        ------------------------------------- #}}
+        {{ /collection:tin_tuc_doan_truong }}
+
     </div>
     {{# ------------------------------------- Column 1 ------------------------------------- #}}
 
     {{# ------------------------------------- Column 2 ------------------------------------- #}}
     <div class="announcements">
-        <h2>
+        <h2 class="bottom-border-news text-bold">
             THÔNG BÁO
         </h2>
 
         {{# ------------------------------------- List Thông báo ------------------------------------- #}}
         {{ collection:thong_bao }}
-            <div class="announcement-item">
-                <a href="{{ url }}">
-                    <div class="announcement-date">
-                        <span class="day">
-                            {{ date format="d" }}
-                        </span>
-                        <span class="year">
-                            {{ date format="m/Y" }}
-                        </span>
-                    </div>
-                </a>
-                <a href="{{ url }}">
-                    <p id="title-thong-bao">
-                        {{ title }}
-                    </p>
-                </a>
-            </div>
+        <div class="announcement-item font-merriweather-darker">
+            <a href="{{ url }}">
+                <div class="announcement-date">
+                    <span class="day">
+                        {{ date format="d" }}
+                    </span>
+                    <span class="year">
+                        {{ date format="m/Y" }}
+                    </span>
+                </div>
+            </a>
+            <a href="{{ url }}">
+                <p id="title-thong-bao" class="font-s-13">
+                    {{ title }}
+                </p>
+            </a>
+        </div>
+        <div class="bottom-border-items"></div>
         {{ /collection:thong_bao }}
         {{# ------------------------------------- List Thông báo ------------------------------------- #}}
 
+        <h2 class="bottom-border-news text-bold">
+            TUYỂN DỤNG
+        </h2>
+        {{# ------------------------------------- List Tuyển dụng ------------------------------------- #}}
+        {{ collection:tuyen_dung }}
+        <div class="announcement-item font-merriweather-darker">
+            <a href="{{ url }}">
+                <div class="announcement-date">
+                    <span class="day">
+                        {{ date format="d" }}
+                    </span>
+                    <span class="year">
+                        {{ date format="m/Y" }}
+                    </span>
+                </div>
+            </a>
+            <a href="{{ url }}">
+                <p id="title-thong-bao" class="font-s-13">
+                    {{ title }}
+                </p>
+            </a>
+        </div>
+        <div class="bottom-border-items"></div>
+        {{ /collection:tuyen_dung }}
+        {{# ------------------------------------- List Tuyển dụng ------------------------------------- #}}
+
+        <h2 class="bottom-border-news text-bold">
+            VIỆC LÀM SINH VIÊN
+        </h2>
+        {{# ------------------------------------- List Việc làm sinh viên ------------------------------------- #}}
+        {{ collection:viec_lam_sinh_vien }}
+        <div class="announcement-item font-merriweather-darker">
+            <a href="{{ url }}">
+                <div class="announcement-date">
+                    <span class="day">
+                        {{ date format="d" }}
+                    </span>
+                    <span class="year">
+                        {{ date format="m/Y" }}
+                    </span>
+                </div>
+            </a>
+            <a href="{{ url }}">
+                <p id="title-thong-bao" class="font-s-13">
+                    {{ title }}
+                </p>
+            </a>
+        </div>
+        <div class="bottom-border-items"></div>
+        {{ /collection:viec_lam_sinh_vien }}
+        {{# ------------------------------------- List Việc làm sinh viên ------------------------------------- #}}
+
     </div>
     {{# ------------------------------------- Column 2 ------------------------------------- #}}
+
+    {{# ------------------------------------- Column 3 ------------------------------------- #}}
+    <div class="side-column" style="margin-left: 20px">
+        {{# ------------------------------------- YouTube ------------------------------------- #}}
+        <div>
+            {{# <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oDtMLAhO-Ic"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe> #}}
+            <div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMhAR47LH6d2BJBueN3ToHMCA0MHA8gzetRzNFZPjIYTsD5g/viewform"
+                    target="_blank">
+                    <img style="width: 100%;" src="/assets/image/dang-ky-truc-tuyen-2025.gif" alt="Đăng ký tuyển sinh">
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="" target="_blank">
+                    <img style="width: 100%;" src="/assets/image/view/tuyensinhlienket2025.jpg"
+                        alt="Đăng ký tuyển sinh">
+                </a>
+            </div>
+            <br>
+            <div style="margin-top: 20px;">
+                <a href="https://bot.maplestc.com/bot/684641cb9fd68beb9b17ff93?iframe_id=684644a29fd68beb9b180015"
+                    target="_blank">
+                    <img style="width: 100%;" src="/assets/image/view/chatbotbcte.jpg" alt="Chatbot">
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="https://moet.gov.vn" target="_blank">
+                    <img style="width: 100%;" src="/assets/image/view/moet.jpg" alt="Bộ Giáo Dục và Đào Tạo">
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="https://mae.gov.vn" target="_blank">
+                    <img style="width: 100%;" src="/assets/image/view/mae.jpg" alt="Bộ Nông Nghiệp và Môi Trường">
+                </a>
+            </div>
+            <br>
+            <div>
+                <a href="https://hscv.mae.gov.vn" target="_blank">
+                    <img style="width: 100%;" src="/assets/image/view/hscv.jpg" alt="Hệ thống quản lý văn bản Bộ Nông Nghiệp và Môi Trường">
+                </a>
+            </div>
+
+            {{# <iframe width="100%" height="100%" src="https://www.youtube.com/embed/j--onrLLuc8"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> #}}
+        </div>
+        <br>
+        {{# ------------------------------------- YouTube ------------------------------------- #}}
+
+        {{# ------------------------------------- Facebook ------------------------------------- #}}
+        <div>
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous"
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
+                </script>
+
+            <div class="fb-page" data-href="https://www.facebook.com/caodangbaoloc" data-tabs="timeline"
+                data-width="500" data-height="300" data-small-header="false" data-adapt-container-width="true"
+                data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/caodangbaoloc" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/caodangbaoloc">Facebook</a>
+                </blockquote>
+            </div>
+        </div>
+
+        {{# ------------------------------------- Facebook ------------------------------------- #}}
+
+        <div style="padding-top: 20px">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UviyENqwzvg"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen class="font-s-13">
+            </iframe>
+        </div>
+    </div>
+    {{# ------------------------------------- Column 3 ------------------------------------- #}}
 </div>
 
 <script>

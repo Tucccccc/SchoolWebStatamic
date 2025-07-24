@@ -1,0 +1,64 @@
+<style>
+    .postHeaderCenterWrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .tinTuc {
+        flex: 3;
+        text-align: justify;
+        font-family: 'Noto Serif', serif;
+    }
+
+    .tinTucTitle {
+        font-weight: bold;
+        font-size: 21px;
+        text-align: center;
+    }
+
+    .tinTucContent {
+        font-size: 17px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .images-side-bottom {
+        margin-top: 38px;
+    }
+
+    .tinTuc {
+        margin-top: 10px;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="postHeaderCenterWrapper">
+    {{# ------------------------------------- Column 1 ------------------------------------- #}}
+    <div class="tinTuc">
+        <div class="tinTucTitle">
+            {{ title }}
+        </div>
+        <br>
+        <div class="container">
+            <article class="tinTucContent">
+                {{ bard_content }}
+            </article>
+        </div>
+        {{ if mot_so_hinh_anh }}
+        {{ mot_so_hinh_anh }}
+        <img style="display: block; margin-left: auto; margin-right: auto; width: 800px" src="{{ value || url }}" />
+        <br>
+        {{ /mot_so_hinh_anh }}
+        {{ /if }}
+    </div>
+    {{# ------------------------------------- Column 1 ------------------------------------- #}}
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+
+    {{ partial:component/side_column/sidecontent }}
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+</div>

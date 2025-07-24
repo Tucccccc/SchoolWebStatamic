@@ -1,0 +1,153 @@
+<style>
+    .postHeaderCenterWrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .tinTuc {
+        flex: 3;
+        text-align: justify;
+        font-family: 'Noto Serif', serif;
+    }
+
+    .tinTucTitle {
+        font-weight: bold;
+        font-size: 21px;
+        text-align: center;
+    }
+
+    .tinTucContent {
+        font-size: 17px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    .images-side-bottom {
+        margin-top: 38px;
+    }
+
+    .tinTuc {
+        margin-top: 10px;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .announcements {
+        flex: 1;
+        padding-left: 38px;
+        padding-top: 20px
+    }
+
+    .announcement-date {
+        background-color: #f0f0f0;
+        padding: 10px;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .announcement-item {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .announcement-date span {
+        display: block;
+    }
+
+    .announcement-date .day {
+        font-size: 24px;
+        color: #F17720;
+    }
+
+    .announcement-date .year {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .announcement-item p {
+        margin: 0;
+    }
+
+    .announcements h2 {
+        color: #F17720;
+        margin-bottom: 10px;
+    }
+
+    .bottom-border-news {
+        border-bottom: 5px solid #F17720;
+    }
+
+    .bottom-border-items {
+        border-bottom: 1px solid #d8d8d8;
+        margin-bottom: 8px;
+    }
+</style>
+
+<div class="postHeaderCenterWrapper">
+    {{# ------------------------------------- Column 1 ------------------------------------- #}}
+    <div class="tinTuc">
+        <div class="tinTucTitle">
+            {{ title }}
+        </div>
+        <br>
+        <div class="tinTucContent">
+            {{ content }}
+        </div>
+    </div>
+    {{# ------------------------------------- Column 1 ------------------------------------- #}}
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+    <div class="announcements">
+        <h2 class="bottom-border-news">
+            THÔNG BÁO
+        </h2>
+
+        {{# ------------------------------------- List Thông báo ------------------------------------- #}}
+        {{ collection:thong_bao }}
+        <div class="announcement-item">
+            <a href="{{ url }}">
+                <div class="announcement-date">
+                    <span class="day">
+                        {{ date format="d" }}
+                    </span>
+                    <span class="year">
+                        {{ date format="m/Y" }}
+                    </span>
+                </div>
+            </a>
+            <a href="{{ url }}">
+                <p id="title-thong-bao">
+                    {{ title }}
+                </p>
+            </a>
+        </div>
+        <div class="bottom-border-items"></div>
+        {{ /collection:thong_bao }}
+        {{# ------------------------------------- List Thông báo ------------------------------------- #}}
+
+        <div class="images-side-bottom">
+            <div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMhAR47LH6d2BJBueN3ToHMCA0MHA8gzetRzNFZPjIYTsD5g/viewform"
+                    target="_blank">
+                    <img style="width: 100%;" src="/assets/image/dang-ky-truc-tuyen-2025.gif" alt="Đăng ký tuyển sinh">
+                </a>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="http://qldt.blc.edu.vn/" target="_blank">
+                    <img style="width: 100%;" src="/assets/image/tkb2.png" alt="Trang sinh viên">
+                </a>
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="https://blc.edu.vn/index.php/using-joomla/extensions/components/content-component/article-category-list/176-trung-tam-kinh-doanh-vnpt-lam-d-ng-tuy-n-d-ng"
+                    target="_blank">
+                    <img style="width: 100%;" src="/assets/image/tuyen-dung-viec-lam.jpg" alt="Trang tuyển dụng">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+</div>

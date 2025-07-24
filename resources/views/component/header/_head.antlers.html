@@ -3,14 +3,18 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px 20px;
+        padding: 0px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
     }
     .logo {
         display: flex;
         align-items: center;
+        flex: 1 1 300px;
+        min-width: 250px;
     }
     .logo img {
-        height: 80px;
+        height: 120px;
         margin-right: 10px;
     }
     .logo-text {
@@ -41,23 +45,64 @@
     .search-box i {
         color: #007bff;
     }
+
+    .img-huan-chuong {
+        width: 170px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    /* ---------- Responsive for tablets and phones ---------- */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo {
+            justify-content: flex-start;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .logo-text .main-title {
+            font-size: 18px;
+            
+        }
+
+        .logo-text .sub-title {
+            font-size: 13px;
+        }
+
+        .img-huan-chuong {
+            width: 100%;
+            max-width: 200px;
+            align-self: center;
+        }
+    }
 </style>
 
+<br>
 <div>
     <div class="header">
         <div class="logo">
             <img class="custom-logo-image head-inl" src="/assets/image/logo_truong.jpg" alt="Logo trường">
             <div class="logo-text">
-                <div class="sub-title">
-                 BỘ NGÀNH TRỰC THUỘC
+                <div class="sub-title" style="font-weight: bold; font-size: 17px">
+                 BỘ NÔNG NGHIỆP VÀ MÔI TRƯỜNG
                 </div>
-                <div class="main-title">
+                <div class="main-title" style="font-weight: bold; font-size: 25px">
                  TRƯỜNG CAO ĐẲNG CÔNG NGHỆ VÀ KINH TẾ BẢO LỘC
                 </div>
-                <div class="sub-title">
-                 BAOLOC COLLEGE OF TECHNOLOGY AND ECONOMICS
+                <div class="sub-title" style="font-weight: bold; font-size: 17px">
+                 Chất lượng - Trách nhiệm - Hội nhập
                 </div>
             </div>
+        </div>
+        <div>
+            <img class="img-huan-chuong" src="/assets/HuanChuong.jpg" alt="Huân chương">
         </div>
         <div class="search-box">
             <input placeholder="Tìm kiếm ..." type="text"/>

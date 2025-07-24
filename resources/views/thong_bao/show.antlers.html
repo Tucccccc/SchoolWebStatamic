@@ -1,13 +1,76 @@
-<div>
-    <div>
-        {{ title }}
+<style>
+    .thong-bao-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .thong-bao-content {
+        flex: 3;
+        margin-top: 10px;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .embedFile {
+        width: 100%;
+        height: 1000px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .word-file a {
+        color: #0474DA;
+        /* Màu chính (xanh dương) */
+        text-decoration: underline;
+        transition: color 0.3s ease;
+    }
+
+    .word-file a:hover {
+        color: #0353a4;
+        /* Màu khi hover */
+        text-decoration: none;
+    }
+
+    .word-file a:visited {
+        color: #5a5a5a;
+        /* Màu nếu đã click */
+    }
+</style>
+
+<div class="thong-bao-wrapper">
+    <br>
+    <div class="thong-bao-content">
+        {{ bard_content }}
+        {{ if word_file }}
+        <div class="word-file">
+
+            {{ word_file }}
+            <p>
+                <a href="{{ url }}" target="_blank" download="{{ basename }}" style="font-weight: bold; font-size: 17px;">
+                    📥 Tải xuống phiếu đăng ký dự tuyển
+                </a>
+            </p>
+            {{ /word_file }}
+
+        </div>
+        {{ /if }}
+
+        {{ if pdf_file}}
+        <div class="thong-bao-content">
+            {{ pdf_file }}
+            <embed class="embedFile" src="{{ value || url }}">
+            {{ /pdf_file }}
+        </div class="thong-bao-content">
+        {{ /if }}
+
     </div>
-    <div>
-        {{ pdf_file }}
-        <embed src= "{{ value || url }}" width="800" height="500">
-        {{ /pdf_file }}
-    </div>
-    <div>
-        {{ ngay_dang format="Y" }}
-    </div>
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
+
+    {{ partial:component/side_column/sidecontent }}
+
+    {{# ------------------------------------- Column 2 ------------------------------------- #}}
 </div>

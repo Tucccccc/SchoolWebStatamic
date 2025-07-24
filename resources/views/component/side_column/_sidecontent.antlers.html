@@ -1,0 +1,201 @@
+<style>
+    .announcements {
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        margin-top: 10px;
+        flex: 1;
+    }
+
+    .announcement-date {
+        background-color: #f0f0f0;
+        padding: 10px;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    .announcement-item {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .announcement-date span {
+        display: block;
+    }
+
+    .announcement-date .day {
+        font-size: 24px;
+        color: #0474DA;
+    }
+
+    .announcement-date .year {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .announcement-item p {
+        margin: 0;
+    }
+
+    .announcements h2 {
+        color: #0474DA;
+        margin-bottom: 10px;
+    }
+
+    .bottom-border-news {
+        border-bottom: 3.5px solid #0474DA;
+    }
+
+    .bottom-border-items {
+        border-bottom: 1px solid #d8d8d8;
+        margin-bottom: 8px;
+    }
+
+    .announcements a:hover {
+        color: #0161bb;
+        /* Màu khi hover */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .font-merriweather {
+        font-family: 'Merriweather', sans-serif;
+        font-weight: 500;
+        color: #222;
+    }
+
+    .text-bold {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .font-s-13 {
+        font-size: 13px;
+        text-align: justify;
+    }
+
+    .bottom-partition {
+        padding-top: 5px;
+    }
+</style>
+
+{{# ------------------------------------- Column 2 ------------------------------------- #}}
+<div class="announcements">
+    <h2 class="bottom-border-news text-bold">
+        THÔNG BÁO
+    </h2>
+
+    {{# ------------------------------------- List Thông báo ------------------------------------- #}}
+    {{ collection:thong_bao }}
+    <div class="announcement-item font-merriweather">
+        <a href="{{ url }}">
+            <div class="announcement-date">
+                <span class="day">
+                    {{ date format="d" }}
+                </span>
+                <span class="year">
+                    {{ date format="m/Y" }}
+                </span>
+            </div>
+        </a>
+        <a href="{{ url }}">
+            <p id="title-thong-bao" class="font-s-13">
+                {{ title }}
+            </p>
+        </a>
+    </div>
+    <div class="bottom-border-items"></div>
+    {{ /collection:thong_bao }}
+    {{# ------------------------------------- List Thông báo ------------------------------------- #}}
+
+    <h2 class="bottom-border-news text-bold">
+        TUYỂN DỤNG
+    </h2>
+    {{# ------------------------------------- List Tuyển dụng ------------------------------------- #}}
+    {{ collection:tuyen_dung }}
+    <div class="announcement-item font-merriweather">
+        <a href="{{ url }}">
+            <div class="announcement-date">
+                <span class="day">
+                    {{ date format="d" }}
+                </span>
+                <span class="year">
+                    {{ date format="m/Y" }}
+                </span>
+            </div>
+        </a>
+        <a href="{{ url }}">
+            <p id="title-thong-bao" class="font-s-13">
+                {{ title }}
+            </p>
+        </a>
+    </div>
+    <div class="bottom-border-items"></div>
+    {{ /collection:tuyen_dung }}
+    {{# ------------------------------------- List Tuyển dụng ------------------------------------- #}}
+
+    <h2 class="bottom-border-news text-bold">
+        VIỆC LÀM SINH VIÊN
+    </h2>
+    {{# ------------------------------------- List Việc làm sinh viên ------------------------------------- #}}
+    {{ collection:viec_lam_sinh_vien }}
+    <div class="announcement-item font-merriweather">
+        <a href="{{ url }}">
+            <div class="announcement-date">
+                <span class="day">
+                    {{ date format="d" }}
+                </span>
+                <span class="year">
+                    {{ date format="m/Y" }}
+                </span>
+            </div>
+        </a>
+        <a href="{{ url }}">
+            <p id="title-thong-bao" class="font-s-13">
+                {{ title }}
+            </p>
+        </a>
+    </div>
+    <div class="bottom-border-items"></div>
+    {{ /collection:viec_lam_sinh_vien }}
+    {{# ------------------------------------- List Việc làm sinh viên ------------------------------------- #}}
+
+    <div class="bottom-partition">
+        <div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMhAR47LH6d2BJBueN3ToHMCA0MHA8gzetRzNFZPjIYTsD5g/viewform"
+                target="_blank">
+                <img style="width: 100%;" src="/assets/image/dang-ky-truc-tuyen-2025.gif" alt="Đăng ký tuyển sinh">
+            </a>
+        </div>
+    </div>
+    <br>
+    {{# ------------------------------------- Facebook ------------------------------------- #}}
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
+    </script>
+
+    <div class="fb-page" data-href="https://www.facebook.com/caodangbaoloc" data-tabs="timeline" data-width="500"
+        data-height="700" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
+        data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/caodangbaoloc" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/caodangbaoloc">Facebook</a>
+        </blockquote>
+    </div>
+    {{# ------------------------------------- Facebook ------------------------------------- #}}
+
+    <div style="padding-top: 20px">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UviyENqwzvg" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen class="font-s-13">
+        </iframe>
+    </div>
+    <div style="margin-top: 20px;">
+        <a href="https://bot.maplestc.com/bot/684641cb9fd68beb9b17ff93?iframe_id=684644a29fd68beb9b180015"
+            target="_blank">
+            <img style="width: 100%;" src="/assets/image/chat_bot.jpg" alt="Trang tuyển dụng">
+        </a>
+    </div>
+</div>
+{{# ------------------------------------- Column 2 ------------------------------------- #}}

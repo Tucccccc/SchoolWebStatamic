@@ -14,11 +14,40 @@ tabs:
                 - required
               display: 'Tiêu đề'
           -
-            handle: content
+            handle: bard_content
             field:
-              type: markdown
-              display: 'Nội dung'
-              localizable: true
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+                - h1
+                - h4
+                - h5
+                - h6
+                - underline
+                - strikethrough
+                - small
+                - superscript
+                - subscript
+                - code
+                - codeblock
+                - horizontalrule
+                - alignleft
+                - aligncenter
+                - alignright
+                - alignjustify
+              remove_empty_nodes: false
+              container: bard_content_images
+              type: bard
+              display: 'Nội dung chính'
           -
             handle: author
             field:
@@ -43,6 +72,34 @@ tabs:
               type: template
               display: Template
               localizable: true
+          -
+            handle: mot_so_hinh_anh
+            field:
+              container: assets
+              type: assets
+              display: 'Mot so hinh anh'
+          -
+            handle: content
+            field:
+              type: markdown
+              display: 'Nội dung'
+              localizable: true
+              listable: true
+              buttons:
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - quote
+                - link
+                - table
+                - strikethrough
+                - asset
+                - code
+                - codeblock
+                - image
+              heading_anchors: true
+              smartypants: true
   sidebar:
     display: Sidebar
     sections:
