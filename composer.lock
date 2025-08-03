@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2fdab2e8995acbbba30e261791a46f8",
+    "content-hash": "ac0c6c4c48d4e43a1407936a77a5075a",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -7437,6 +7437,46 @@
             "time": "2024-12-21T16:25:41+00:00"
         },
         {
+            "name": "tuc/visitlog",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "addons/tuc/visitlog",
+                "reference": "aaae0b9950e8649d9764bfff009b416729b9dc0b"
+            },
+            "require": {
+                "statamic/cms": "^5.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "Visitlog",
+                    "description": "Visitlog addon"
+                },
+                "laravel": {
+                    "providers": [
+                        "Tuc\\Visitlog\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tuc\\Visitlog\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tuc\\Visitlog\\Tests\\": "tests"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "ueberdosis/tiptap-php",
             "version": "1.4.0",
             "source": {
@@ -10292,7 +10332,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "tuc/visitlog": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

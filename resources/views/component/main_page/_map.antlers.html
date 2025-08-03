@@ -7,7 +7,6 @@
 <div id="map"></div>
 
 <script type="text/javascript">
-    // Tọa độ trung tâm bản đồ (TP.HCM)
     const center = [11.542506447486353, 107.80100868121876];
 
     var map = L.map('map').setView([11.542506447486353, 107.80100868121876], 15);
@@ -17,7 +16,13 @@
     }).addTo(map);
 
     // Thêm marker
-    L.marker(center).addTo(map)
+    var markerOnMap = L.marker(center).addTo(map)
         .bindPopup('Trường CD CN và KT Bảo Lộc')
         .openPopup();
+
+    // Khi click vào marker → mở Google Maps
+    markerOnMap.on('click', function () {
+        const googleMapsUrl = 'https://www.google.com/maps?q=Trường+Cao+đẳng+Công+nghệ+và+Kinh+tế+Bảo+Lộc';
+        window.open(googleMapsUrl, '_blank');
+    });
 </script>

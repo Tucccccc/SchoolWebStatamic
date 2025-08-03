@@ -169,6 +169,10 @@
         font-weight: 500;
         color: #222;
     }
+
+    .fb-section {
+        max-width: 100%;
+    }
 </style>
 
 <div class="post-line-1-wrapper">
@@ -238,7 +242,7 @@
 
         {{# ------------------------------------- Pagination for List Tin tức ------------------------------------- #}}
         <br>
-        <div style="padding-left: 43%; padding-right: 43%; color: #0474DA" class="font-s-13">
+        <div style="padding-left: 43%; padding-right: 30%; color: #0474DA" class="font-s-13">
             {{ paginate }}
             <a href="{{ prev_page }}">⬅ </a>
 
@@ -300,7 +304,7 @@
         {{# ------------------------------------- Pagination for List Tin tức Đoàn Thanh Niên
         ------------------------------------- #}}
         <br>
-        <div style="padding-left: 43%; padding-right: 43%; color: #0474DA" class="font-s-13">
+        <div style="padding-left: 43%; padding-right: 30%; color: #0474DA" class="font-s-13">
             {{ paginate }}
             <a href="{{ prev_page }}">⬅ </a>
 
@@ -460,7 +464,7 @@
         {{# ------------------------------------- YouTube ------------------------------------- #}}
 
         {{# ------------------------------------- Facebook ------------------------------------- #}}
-        <div>
+        <div class="fb-section">
             <div id="fb-root"></div>
             <script async defer crossorigin="anonymous"
                 src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">

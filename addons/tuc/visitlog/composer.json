@@ -1,0 +1,37 @@
+{
+    "name": "tuc/visitlog",
+    "autoload": {
+        "psr-4": {
+            "Tuc\\Visitlog\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tuc\\Visitlog\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "statamic/cms": "^5.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Visitlog",
+            "description": "Visitlog addon"
+        },
+        "laravel": {
+            "providers": [
+                "Tuc\\Visitlog\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
